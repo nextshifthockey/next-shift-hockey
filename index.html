@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Next Shift Hockey prepares players for team success through tactical development, elite practice habits, and tryout readiness." />
   <title>Next Shift Hockey</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --navy: #04111f;
@@ -22,7 +24,9 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
@@ -35,62 +39,111 @@
     }
 
     a { color: inherit; }
-    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
       backdrop-filter: blur(14px);
-      background: rgba(2, 9, 16, .78);
+      background: rgba(2, 9, 16, .84);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 72px;
-      display: flex;
+      min-height: 106px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      gap: 34px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
       text-decoration: none;
-      font-family: "Barlow Condensed", sans-serif;
-      font-weight: 800;
-      font-size: 1.35rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 44px;
-      height: 34px;
-      object-fit: cover;
-      object-position: 50% 37%;
-      border-radius: 4px;
+      display: block;
+      width: auto;
+      height: 82px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 22px rgba(8,126,234,.20));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--ice);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -8px;
+      height: 2px;
+      background: var(--blue-bright);
+      transition: right .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--blue-bright);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      right: 0;
     }
 
     .nav-cta {
       text-decoration: none;
-      padding: 10px 16px;
-      border: 1px solid rgba(26,152,255,.55);
+      padding: 11px 18px;
+      border: 1px solid rgba(26,152,255,.65);
       border-radius: 999px;
       font-weight: 700;
-      font-size: .92rem;
+      font-size: .94rem;
+      white-space: nowrap;
       transition: .2s ease;
     }
 
-    .nav-cta:hover { background: var(--blue); border-color: var(--blue); }
+    .nav-cta:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    #philosophy,
+    #difference,
+    #development,
+    #contact {
+      scroll-margin-top: 125px;
+    }
 
     .hero {
-      min-height: 78vh;
+      min-height: calc(100vh - 106px);
       display: grid;
       align-items: center;
-      padding: 88px 0 72px;
+      padding: 76px 0 82px;
       position: relative;
       overflow: hidden;
     }
@@ -107,9 +160,11 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.04fr .96fr;
       align-items: center;
-      gap: 64px;
+      gap: 54px;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
@@ -140,17 +195,30 @@
       letter-spacing: .01em;
     }
 
-    h1 { font-size: clamp(4rem, 9vw, 7.5rem); font-weight: 800; }
-    h1 span { color: var(--blue-bright); }
+    h1 {
+      max-width: 760px;
+      font-size: clamp(4.35rem, 8.5vw, 7.7rem);
+      font-weight: 800;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--blue-bright);
+    }
 
     .hero-copy {
-      max-width: 680px;
-      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      max-width: 690px;
+      font-size: clamp(1.05rem, 1.7vw, 1.28rem);
       color: var(--ice);
       margin: 28px 0 32px;
     }
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -162,40 +230,84 @@
       font-weight: 800;
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
+
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: linear-gradient(135deg, var(--blue), var(--blue-bright)); box-shadow: 0 12px 32px rgba(8,126,234,.25); }
-    .btn-secondary { border: 1px solid var(--line); background: rgba(255,255,255,.04); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-bright));
+      box-shadow: 0 12px 32px rgba(8,126,234,.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
 
     .logo-panel {
       position: relative;
-      min-height: 470px;
+      min-height: 560px;
       display: grid;
       place-items: center;
+      isolation: isolate;
     }
 
     .logo-panel::before {
       content: "";
       position: absolute;
-      width: 380px;
-      height: 380px;
+      width: 510px;
+      height: 510px;
       border-radius: 50%;
-      border: 1px solid rgba(26,152,255,.25);
-      box-shadow: 0 0 90px rgba(8,126,234,.16), inset 0 0 70px rgba(8,126,234,.08);
+      background:
+        radial-gradient(circle, rgba(18,126,255,.22) 0%, rgba(8,126,234,.10) 42%, transparent 70%);
+      box-shadow:
+        0 0 110px rgba(8,126,234,.22),
+        inset 0 0 80px rgba(8,126,234,.10);
+      z-index: -2;
+    }
+
+    .logo-panel::after {
+      content: "";
+      position: absolute;
+      width: 475px;
+      height: 475px;
+      border-radius: 50%;
+      border: 1px solid rgba(26,152,255,.38);
+      box-shadow: 0 0 36px rgba(26,152,255,.20);
+      z-index: -1;
     }
 
     .hero-logo {
-      width: min(100%, 440px);
-      height: 440px;
+      width: min(100%, 620px);
+      height: auto;
       object-fit: contain;
       position: relative;
       z-index: 1;
-      filter: drop-shadow(0 18px 40px rgba(0,0,0,.5));
+      filter:
+        drop-shadow(0 22px 48px rgba(0,0,0,.58))
+        drop-shadow(0 0 28px rgba(26,152,255,.20));
+      animation: logoFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     section { padding: 86px 0; }
-    .section-head { max-width: 760px; margin-bottom: 42px; }
-    .section-head h2 { font-size: clamp(2.8rem, 6vw, 5rem); }
-    .section-head p { color: var(--muted); font-size: 1.08rem; }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
 
     .philosophy-grid {
       display: grid;
@@ -219,8 +331,15 @@
       letter-spacing: .16em;
     }
 
-    .card h3 { font-size: 2rem; margin: 10px 0 14px; }
-    .card p { color: var(--muted); margin: 0; }
+    .card h3 {
+      font-size: 2rem;
+      margin: 10px 0 14px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+    }
 
     .difference {
       background: linear-gradient(180deg, rgba(7,27,46,.72), rgba(2,7,13,.4));
@@ -234,13 +353,39 @@
       gap: 24px;
     }
 
-    .compare-card h3 { font-size: 2.3rem; margin-bottom: 12px; }
-    .compare-card.highlight { border-color: rgba(26,152,255,.48); background: linear-gradient(180deg, rgba(8,126,234,.12), rgba(255,255,255,.045)); }
+    .compare-card h3 {
+      font-size: 2.3rem;
+      margin-bottom: 12px;
+    }
+
+    .compare-card.highlight {
+      border-color: rgba(26,152,255,.48);
+      background: linear-gradient(180deg, rgba(8,126,234,.12), rgba(255,255,255,.045));
+    }
+
     .compare-card p { color: var(--muted); }
 
-    .checklist { list-style: none; padding: 0; margin: 22px 0 0; }
-    .checklist li { position: relative; padding: 9px 0 9px 28px; color: var(--ice); }
-    .checklist li::before { content: "›"; position: absolute; left: 4px; color: var(--blue-bright); font-size: 1.4rem; font-weight: 800; top: 4px; }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding: 9px 0 9px 28px;
+      color: var(--ice);
+    }
+
+    .checklist li::before {
+      content: "›";
+      position: absolute;
+      left: 4px;
+      color: var(--blue-bright);
+      font-size: 1.4rem;
+      font-weight: 800;
+      top: 4px;
+    }
 
     .outcomes {
       display: grid;
@@ -254,8 +399,17 @@
       background: rgba(255,255,255,.035);
       min-height: 150px;
     }
-    .outcome h3 { font-size: 1.7rem; margin-bottom: 10px; }
-    .outcome p { color: var(--muted); margin: 0; font-size: .95rem; }
+
+    .outcome h3 {
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+    }
+
+    .outcome p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .95rem;
+    }
 
     .cta {
       padding-top: 48px;
@@ -283,11 +437,27 @@
       background: rgba(26,152,255,.17);
       transform: rotate(-10deg);
     }
-    .cta-box::before { left: -90px; top: 40px; }
-    .cta-box::after { right: -90px; bottom: 40px; }
 
-    .cta-box h2 { font-size: clamp(3rem, 7vw, 5.7rem); }
-    .cta-box p { color: var(--ice); max-width: 720px; margin: 18px auto 28px; font-size: 1.12rem; }
+    .cta-box::before {
+      left: -90px;
+      top: 40px;
+    }
+
+    .cta-box::after {
+      right: -90px;
+      bottom: 40px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(3rem, 7vw, 5.7rem);
+    }
+
+    .cta-box p {
+      color: var(--ice);
+      max-width: 720px;
+      margin: 18px auto 28px;
+      font-size: 1.12rem;
+    }
 
     footer {
       border-top: 1px solid var(--line);
@@ -296,42 +466,194 @@
       font-size: .9rem;
     }
 
-    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
     .footer-row strong { color: var(--white); }
 
-    @media (max-width: 900px) {
-      .hero-grid, .philosophy-grid, .compare-grid { grid-template-columns: 1fr; }
-      .logo-panel { min-height: 340px; order: -1; }
-      .hero-logo { height: 340px; }
-      .logo-panel::before { width: 290px; height: 290px; }
-      .outcomes { grid-template-columns: 1fr 1fr; }
-      .hero { padding-top: 48px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-logo { animation: none; }
+      .btn, .nav-cta { transition: none; }
+    }
+
+    @media (max-width: 1060px) {
+      .nav {
+        grid-template-columns: auto 1fr;
+        gap: 22px;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-end;
+        gap: 20px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 780px) {
+      header {
+        position: sticky;
+      }
+
+      .nav {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 8px;
+        padding: 10px 0 12px;
+      }
+
+      .brand-mark {
+        height: 64px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 22px;
+        overflow-x: auto;
+        padding: 2px 4px 8px;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-links a {
+        font-size: .84rem;
+      }
+
+      #philosophy,
+      #difference,
+      #development,
+      #contact {
+        scroll-margin-top: 145px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .philosophy-grid,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-panel {
+        min-height: 420px;
+        order: -1;
+      }
+
+      .hero-logo {
+        width: min(100%, 520px);
+      }
+
+      .logo-panel::before {
+        width: 390px;
+        height: 390px;
+      }
+
+      .logo-panel::after {
+        width: 360px;
+        height: 360px;
+      }
+
+      .outcomes {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
     }
 
     @media (max-width: 620px) {
-      .wrap { width: min(100% - 28px, 1120px); }
-      .brand span { display: none; }
-      .nav { min-height: 64px; }
-      .hero { min-height: auto; padding: 36px 0 60px; }
-      .logo-panel { min-height: 250px; }
-      .hero-logo { height: 260px; }
-      .logo-panel::before { width: 225px; height: 225px; }
-      h1 { font-size: 4rem; }
-      section { padding: 66px 0; }
-      .outcomes { grid-template-columns: 1fr; }
-      .cta-box { padding: 42px 22px; }
-      .footer-row { flex-direction: column; }
+      .wrap {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .brand-mark {
+        height: 58px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 34px 0 60px;
+      }
+
+      .logo-panel {
+        min-height: 300px;
+      }
+
+      .hero-logo {
+        width: min(100%, 360px);
+      }
+
+      .logo-panel::before {
+        width: 275px;
+        height: 275px;
+      }
+
+      .logo-panel::after {
+        width: 250px;
+        height: 250px;
+      }
+
+      h1 {
+        font-size: clamp(3.8rem, 18vw, 5.2rem);
+      }
+
+      section {
+        padding: 66px 0;
+      }
+
+      .outcomes {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        padding: 42px 22px;
+      }
+
+      .footer-row {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Next Shift Hockey home">
-        <img class="brand-mark" src="assets/next-shift-logo.png" alt="Next Shift Hockey logo" />
-        <span>Next Shift Hockey</span>
+        <img
+          class="brand-mark"
+          src="assets/next-shift-logo-white.png"
+          alt="Next Shift Hockey"
+        />
       </a>
-      <a class="nav-cta" href="mailto:claudio.virga@nextshifthockey.ca">Get in touch</a>
+
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#philosophy">Philosophy</a>
+        <a href="#difference">What Makes Us Different</a>
+        <a href="#development">Player Development</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="mailto:claudio.virga@nextshifthockey.ca">
+        Get in touch
+      </a>
     </div>
   </header>
 
@@ -339,18 +661,33 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow">Player development for team success</div>
-          <h1>Develop today.<br><span>Dominate tomorrow.</span></h1>
+          <div class="eyebrow">Develop today. Dominate tomorrow.</div>
+
+          <h1>
+            Train for your next shift.
+            <span>Dominate it.</span>
+          </h1>
+
           <p class="hero-copy">
-            Next Shift Hockey helps players become the kind of teammates coaches trust—prepared, competitive, accountable, tactically aware, and ready to make an impact from the first day of tryouts.
+            Next Shift Hockey helps players become the kind of teammates coaches trust—prepared,
+            competitive, accountable, tactically aware, and ready to make an impact from the first
+            day of tryouts.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#philosophy">Our philosophy</a>
-            <a class="btn btn-secondary" href="mailto:claudio.virga@nextshifthockey.ca">Ask about upcoming skates</a>
+            <a class="btn btn-secondary" href="mailto:claudio.virga@nextshifthockey.ca">
+              Ask about upcoming skates
+            </a>
           </div>
         </div>
-        <div class="logo-panel" aria-hidden="true">
-          <img class="hero-logo" src="assets/next-shift-logo.png" alt="" />
+
+        <div class="logo-panel">
+          <img
+            class="hero-logo"
+            src="assets/next-shift-logo-white.png"
+            alt="Next Shift Hockey — Develop today. Dominate tomorrow."
+          />
         </div>
       </div>
     </section>
@@ -361,7 +698,9 @@
           <div class="eyebrow">Our philosophy</div>
           <h2>Better players. Better teammates.</h2>
           <p>
-            We believe player development is about more than isolated skill. The goal is to help athletes transfer their skills into real team environments while building the habits, awareness, discipline, and confidence required to succeed.
+            We believe player development is about more than isolated skill. The goal is to help
+            athletes transfer their skills into real team environments while building the habits,
+            awareness, discipline, and confidence required to succeed.
           </p>
         </div>
 
@@ -369,22 +708,38 @@
           <article class="card">
             <div class="card-number">01 — PLAYER FIRST</div>
             <h3>Development with purpose</h3>
-            <p>Every session is designed to help players understand not only what to do, but when and why to do it. That means stronger hockey IQ, better decisions, and skills that hold up under pressure.</p>
+            <p>
+              Every session is designed to help players understand not only what to do, but when
+              and why to do it. That means stronger hockey IQ, better decisions, and skills that
+              hold up under pressure.
+            </p>
           </article>
+
           <article class="card">
             <div class="card-number">02 — HIGH STANDARDS</div>
             <h3>Habits coaches notice</h3>
-            <p>We reinforce pace, compete level, attention to detail, communication, accountability, and consistency—the practice behaviours that earn trust and create opportunities.</p>
+            <p>
+              We reinforce pace, compete level, attention to detail, communication, accountability,
+              and consistency—the practice behaviours that earn trust and create opportunities.
+            </p>
           </article>
+
           <article class="card">
             <div class="card-number">03 — TEAM IMPACT</div>
             <h3>Play connected</h3>
-            <p>Players learn how to support teammates, create options, defend with structure, manage space, and contribute within systems instead of playing as five individuals.</p>
+            <p>
+              Players learn how to support teammates, create options, defend with structure,
+              manage space, and contribute within systems instead of playing as five individuals.
+            </p>
           </article>
+
           <article class="card">
             <div class="card-number">04 — GROWTH MINDSET</div>
             <h3>Prepared for the next level</h3>
-            <p>We create a competitive, supportive, and respectful environment that develops resilience, discipline, confidence, and a willingness to be coached.</p>
+            <p>
+              We create a competitive, supportive, and respectful environment that develops
+              resilience, discipline, confidence, and a willingness to be coached.
+            </p>
           </article>
         </div>
       </div>
@@ -396,7 +751,9 @@
           <div class="eyebrow">What makes us different</div>
           <h2>Skills matter. So does knowing how to play.</h2>
           <p>
-            Individual skill development is essential at every level. Next Shift complements that work by focusing on how players apply their abilities within team tactics, practices, games, and tryout situations.
+            Individual skill development is essential at every level. Next Shift complements that
+            work by focusing on how players apply their abilities within team tactics, practices,
+            games, and tryout situations.
           </p>
         </div>
 
@@ -427,7 +784,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="development">
       <div class="wrap">
         <div class="section-head">
           <div class="eyebrow">What players develop</div>
@@ -439,14 +796,17 @@
             <h3>Tryout readiness</h3>
             <p>Know what coaches evaluate and how to make a strong, consistent impression.</p>
           </article>
+
           <article class="outcome">
             <h3>Practice habits</h3>
             <p>Arrive prepared, execute with pace, respond to feedback, and compete every rep.</p>
           </article>
+
           <article class="outcome">
             <h3>Tactical awareness</h3>
             <p>Recognize common team concepts and make faster, more connected decisions.</p>
           </article>
+
           <article class="outcome">
             <h3>Team value</h3>
             <p>Become dependable, accountable, communicative, and easier for coaches to trust.</p>
@@ -460,8 +820,12 @@
         <div class="cta-box">
           <div class="eyebrow">Train for your next shift</div>
           <h2>Dominate it.</h2>
-          <p>Learn about upcoming development skates, camps, and team-focused training opportunities.</p>
-          <a class="btn btn-primary" href="mailto:claudio.virga@nextshifthockey.ca">claudio.virga@nextshifthockey.ca</a>
+          <p>
+            Learn about upcoming development skates, camps, and team-focused training opportunities.
+          </p>
+          <a class="btn btn-primary" href="mailto:claudio.virga@nextshifthockey.ca">
+            claudio.virga@nextshifthockey.ca
+          </a>
         </div>
       </div>
     </section>
