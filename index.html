@@ -2,13 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Next Shift Hockey prepares players for team success through tactical development, elite practice habits, and tryout readiness." />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Next Shift Hockey prepares players for team success through tactical development, elite practice habits, and tryout readiness."
+  />
+
   <title>Next Shift Hockey</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
@@ -21,45 +39,72 @@
       --muted: #a9bed1;
       --line: rgba(255, 255, 255, 0.11);
       --card: rgba(255, 255, 255, 0.055);
+      --header-height: 120px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: "Inter", Arial, sans-serif;
       color: var(--white);
+
       background:
-        radial-gradient(circle at 85% 10%, rgba(8,126,234,.18), transparent 26%),
-        radial-gradient(circle at 20% 55%, rgba(8,126,234,.08), transparent 30%),
-        linear-gradient(180deg, #020910 0%, var(--navy) 45%, #02070d 100%);
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(8, 126, 234, 0.18),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 20% 55%,
+          rgba(8, 126, 234, 0.08),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #020910 0%,
+          var(--navy) 45%,
+          #02070d 100%
+        );
+
       line-height: 1.6;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
 
     .wrap {
-      width: min(1180px, calc(100% - 40px));
+      width: min(1280px, calc(100% - 48px));
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
+
       backdrop-filter: blur(14px);
-      background: rgba(2, 9, 16, .84);
+      -webkit-backdrop-filter: blur(14px);
+
+      background: rgba(2, 9, 16, 0.88);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
-      min-height: 106px;
+      min-height: var(--header-height);
+
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 34px;
+
+      gap: 36px;
     }
 
     .brand {
@@ -71,38 +116,54 @@
 
     .brand-mark {
       display: block;
+
       width: auto;
-      height: 82px;
+      height: 108px;
+
       object-fit: contain;
-      filter: drop-shadow(0 8px 22px rgba(8,126,234,.20));
+
+      filter:
+        drop-shadow(0 8px 22px rgba(8, 126, 234, 0.25));
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 28px;
+      justify-content: flex-start;
+
+      gap: 34px;
+      margin-left: 24px;
     }
 
     .nav-links a {
       position: relative;
+
       color: var(--ice);
       text-decoration: none;
-      font-size: .9rem;
+
+      font-size: 0.92rem;
       font-weight: 700;
+
       white-space: nowrap;
-      transition: color .2s ease;
+
+      transition:
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .nav-links a::after {
       content: "";
+
       position: absolute;
       left: 0;
       right: 100%;
-      bottom: -8px;
+      bottom: -9px;
+
       height: 2px;
+
       background: var(--blue-bright);
-      transition: right .2s ease;
+
+      transition: right 0.2s ease;
     }
 
     .nav-links a:hover,
@@ -116,14 +177,25 @@
     }
 
     .nav-cta {
-      text-decoration: none;
-      padding: 11px 18px;
-      border: 1px solid rgba(26,152,255,.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+      padding: 0 21px;
+
+      border: 1px solid rgba(26, 152, 255, 0.65);
       border-radius: 999px;
+
+      text-decoration: none;
       font-weight: 700;
-      font-size: .94rem;
+      font-size: 0.94rem;
       white-space: nowrap;
-      transition: .2s ease;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .nav-cta:hover {
@@ -136,33 +208,48 @@
     #difference,
     #development,
     #contact {
-      scroll-margin-top: 125px;
+      scroll-margin-top: 140px;
     }
 
     .hero {
-      min-height: calc(100vh - 106px);
+      min-height: calc(100vh - var(--header-height));
+
       display: grid;
       align-items: center;
-      padding: 76px 0 82px;
+
+      padding: 74px 0 84px;
+
       position: relative;
       overflow: hidden;
     }
 
     .hero::after {
       content: "";
+
       position: absolute;
       inset: auto -10% -170px 35%;
+
       height: 390px;
-      background: linear-gradient(110deg, transparent 10%, rgba(8,126,234,.20), transparent 72%);
+
+      background:
+        linear-gradient(
+          110deg,
+          transparent 10%,
+          rgba(8, 126, 234, 0.20),
+          transparent 72%
+        );
+
       transform: rotate(-8deg);
       pointer-events: none;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr .96fr;
+      grid-template-columns: 1.04fr 0.96fr;
       align-items: center;
-      gap: 54px;
+
+      gap: 56px;
+
       position: relative;
       z-index: 1;
     }
@@ -170,34 +257,44 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
+
       gap: 10px;
+
       color: var(--blue-bright);
+
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: .78rem;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+
       margin-bottom: 18px;
     }
 
     .eyebrow::before {
       content: "";
+
       width: 38px;
       height: 3px;
+
       background: var(--blue);
       transform: skewX(-25deg);
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+
       font-family: "Barlow Condensed", sans-serif;
       text-transform: uppercase;
-      line-height: .95;
-      margin: 0;
-      letter-spacing: .01em;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
     }
 
     h1 {
       max-width: 760px;
-      font-size: clamp(4.35rem, 8.5vw, 7.7rem);
+
+      font-size: clamp(4.35rem, 8.2vw, 7.6rem);
       font-weight: 800;
     }
 
@@ -208,9 +305,11 @@
 
     .hero-copy {
       max-width: 690px;
-      font-size: clamp(1.05rem, 1.7vw, 1.28rem);
-      color: var(--ice);
+
       margin: 28px 0 32px;
+
+      color: var(--ice);
+      font-size: clamp(1.05rem, 1.7vw, 1.28rem);
     }
 
     .hero-actions {
@@ -223,77 +322,226 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       min-height: 50px;
       padding: 0 22px;
+
       border-radius: 8px;
+
       text-decoration: none;
       font-weight: 800;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--blue), var(--blue-bright));
-      box-shadow: 0 12px 32px rgba(8,126,234,.25);
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--blue-bright)
+        );
+
+      box-shadow:
+        0 12px 32px rgba(8, 126, 234, 0.25);
     }
 
     .btn-secondary {
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, 0.04);
     }
+
+    /*
+      HERO LOGO AREA
+      Subtle hockey faceoff-circle design
+    */
 
     .logo-panel {
       position: relative;
-      min-height: 560px;
-      display: grid;
-      place-items: center;
+
+      min-height: 590px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       isolation: isolate;
     }
 
+    /*
+      Soft blue glow behind the faceoff circle
+    */
+
     .logo-panel::before {
       content: "";
+
       position: absolute;
-      width: 510px;
-      height: 510px;
+
+      width: 560px;
+      height: 560px;
+
       border-radius: 50%;
+
       background:
-        radial-gradient(circle, rgba(18,126,255,.22) 0%, rgba(8,126,234,.10) 42%, transparent 70%);
+        radial-gradient(
+          circle,
+          rgba(24, 120, 255, 0.18) 0%,
+          rgba(24, 120, 255, 0.09) 42%,
+          rgba(24, 120, 255, 0.03) 58%,
+          transparent 72%
+        );
+
+      filter: blur(7px);
+
       box-shadow:
-        0 0 110px rgba(8,126,234,.22),
-        inset 0 0 80px rgba(8,126,234,.10);
+        0 0 90px rgba(8, 126, 234, 0.22);
+
       z-index: -2;
     }
 
+    /*
+      Faceoff circle:
+      - outer circle
+      - centre line
+      - short horizontal hash marks
+      - centre dot
+    */
+
     .logo-panel::after {
       content: "";
+
       position: absolute;
-      width: 475px;
-      height: 475px;
+
+      width: 510px;
+      height: 510px;
+
       border-radius: 50%;
-      border: 1px solid rgba(26,152,255,.38);
-      box-shadow: 0 0 36px rgba(26,152,255,.20);
+      border: 2px solid rgba(42, 137, 235, 0.38);
+
+      background:
+        /* centre faceoff dot */
+        radial-gradient(
+          circle at center,
+          rgba(40, 135, 235, 0.48) 0 5px,
+          transparent 6px
+        ),
+
+        /* vertical centre line */
+        linear-gradient(
+          90deg,
+          transparent calc(50% - 1px),
+          rgba(40, 135, 235, 0.20) calc(50% - 1px),
+          rgba(40, 135, 235, 0.20) calc(50% + 1px),
+          transparent calc(50% + 1px)
+        ),
+
+        /* left upper hash mark */
+        linear-gradient(
+          90deg,
+          transparent 0 16%,
+          rgba(40, 135, 235, 0.25) 16% 29%,
+          transparent 29% 100%
+        ),
+
+        /* right upper hash mark */
+        linear-gradient(
+          90deg,
+          transparent 0 71%,
+          rgba(40, 135, 235, 0.25) 71% 84%,
+          transparent 84% 100%
+        ),
+
+        /* left lower hash mark */
+        linear-gradient(
+          90deg,
+          transparent 0 16%,
+          rgba(40, 135, 235, 0.25) 16% 29%,
+          transparent 29% 100%
+        ),
+
+        /* right lower hash mark */
+        linear-gradient(
+          90deg,
+          transparent 0 71%,
+          rgba(40, 135, 235, 0.25) 71% 84%,
+          transparent 84% 100%
+        ),
+
+        /* subtle ice glow */
+        radial-gradient(
+          circle at center,
+          rgba(13, 79, 156, 0.12),
+          rgba(7, 41, 84, 0.04) 58%,
+          transparent 74%
+        );
+
+      background-size:
+        100% 100%,
+        100% 100%,
+        100% 2px,
+        100% 2px,
+        100% 2px,
+        100% 2px,
+        100% 100%;
+
+      background-position:
+        center,
+        center,
+        center 36%,
+        center 36%,
+        center 64%,
+        center 64%,
+        center;
+
+      background-repeat: no-repeat;
+
+      box-shadow:
+        0 0 48px rgba(30, 120, 255, 0.18),
+        inset 0 0 48px rgba(30, 120, 255, 0.08);
+
       z-index: -1;
     }
 
     .hero-logo {
-      width: min(100%, 620px);
-      height: auto;
-      object-fit: contain;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+
+      display: block;
+
+      width: min(88%, 470px);
+      height: auto;
+
+      object-fit: contain;
+
       filter:
-        drop-shadow(0 22px 48px rgba(0,0,0,.58))
-        drop-shadow(0 0 28px rgba(26,152,255,.20));
-      animation: logoFloat 5s ease-in-out infinite;
+        drop-shadow(0 25px 45px rgba(0, 0, 0, 0.55))
+        drop-shadow(0 0 32px rgba(45, 135, 255, 0.20));
+
+      animation:
+        logoFloat 5s ease-in-out infinite;
     }
 
     @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
-    section { padding: 86px 0; }
+    section {
+      padding: 86px 0;
+    }
 
     .section-head {
       max-width: 760px;
@@ -316,33 +564,43 @@
     }
 
     .card {
+      padding: 30px;
+
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.16);
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.16);
     }
 
     .card-number {
       color: var(--blue-bright);
+
       font-family: "Barlow Condensed", sans-serif;
       font-size: 1rem;
       font-weight: 800;
-      letter-spacing: .16em;
+      letter-spacing: 0.16em;
     }
 
     .card h3 {
-      font-size: 2rem;
       margin: 10px 0 14px;
+      font-size: 2rem;
     }
 
     .card p {
-      color: var(--muted);
       margin: 0;
+      color: var(--muted);
     }
 
     .difference {
-      background: linear-gradient(180deg, rgba(7,27,46,.72), rgba(2,7,13,.4));
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7, 27, 46, 0.72),
+          rgba(2, 7, 13, 0.4)
+        );
+
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -354,37 +612,51 @@
     }
 
     .compare-card h3 {
-      font-size: 2.3rem;
       margin-bottom: 12px;
+      font-size: 2.3rem;
     }
 
     .compare-card.highlight {
-      border-color: rgba(26,152,255,.48);
-      background: linear-gradient(180deg, rgba(8,126,234,.12), rgba(255,255,255,.045));
+      border-color: rgba(26, 152, 255, 0.48);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(8, 126, 234, 0.12),
+          rgba(255, 255, 255, 0.045)
+        );
     }
 
-    .compare-card p { color: var(--muted); }
+    .compare-card p {
+      color: var(--muted);
+    }
 
     .checklist {
       list-style: none;
+
       padding: 0;
       margin: 22px 0 0;
     }
 
     .checklist li {
       position: relative;
+
       padding: 9px 0 9px 28px;
+
       color: var(--ice);
     }
 
     .checklist li::before {
       content: "›";
+
       position: absolute;
       left: 4px;
+      top: 4px;
+
       color: var(--blue-bright);
+
       font-size: 1.4rem;
       font-weight: 800;
-      top: 4px;
     }
 
     .outcomes {
@@ -394,21 +666,26 @@
     }
 
     .outcome {
-      padding: 24px 20px;
-      border-left: 3px solid var(--blue);
-      background: rgba(255,255,255,.035);
       min-height: 150px;
+
+      padding: 24px 20px;
+
+      border-left: 3px solid var(--blue);
+
+      background:
+        rgba(255, 255, 255, 0.035);
     }
 
     .outcome h3 {
-      font-size: 1.7rem;
       margin-bottom: 10px;
+      font-size: 1.7rem;
     }
 
     .outcome p {
-      color: var(--muted);
       margin: 0;
-      font-size: .95rem;
+
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .cta {
@@ -417,24 +694,36 @@
     }
 
     .cta-box {
-      border-radius: 22px;
-      padding: 54px;
-      text-align: center;
-      background:
-        linear-gradient(135deg, rgba(8,126,234,.22), rgba(7,27,46,.72)),
-        #071827;
-      border: 1px solid rgba(26,152,255,.38);
       position: relative;
       overflow: hidden;
+
+      padding: 54px;
+
+      text-align: center;
+
+      border: 1px solid rgba(26, 152, 255, 0.38);
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(8, 126, 234, 0.22),
+          rgba(7, 27, 46, 0.72)
+        ),
+        #071827;
     }
 
     .cta-box::before,
     .cta-box::after {
       content: "";
+
       position: absolute;
+
       width: 280px;
       height: 30px;
-      background: rgba(26,152,255,.17);
+
+      background: rgba(26, 152, 255, 0.17);
+
       transform: rotate(-10deg);
     }
 
@@ -453,73 +742,166 @@
     }
 
     .cta-box p {
-      color: var(--ice);
       max-width: 720px;
+
       margin: 18px auto 28px;
+
+      color: var(--ice);
       font-size: 1.12rem;
     }
 
     footer {
-      border-top: 1px solid var(--line);
       padding: 26px 0 34px;
+
+      border-top: 1px solid var(--line);
+
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
 
     .footer-row {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
+
+      gap: 20px;
     }
 
-    .footer-row strong { color: var(--white); }
+    .footer-row strong {
+      color: var(--white);
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .hero-logo { animation: none; }
-      .btn, .nav-cta { transition: none; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      .hero-logo {
+        animation: none;
+      }
+
+      .btn,
+      .nav-cta,
+      .nav-links a {
+        transition: none;
+      }
     }
 
-    @media (max-width: 1060px) {
+    @media (max-width: 1100px) {
       .nav {
         grid-template-columns: auto 1fr;
-        gap: 22px;
-        padding: 12px 0;
+        gap: 24px;
+
+        padding: 8px 0;
+      }
+
+      .brand-mark {
+        height: 92px;
       }
 
       .nav-links {
         justify-content: flex-end;
-        gap: 20px;
+
+        gap: 22px;
+        margin-left: 0;
       }
 
       .nav-cta {
         display: none;
       }
+
+      .hero-grid {
+        gap: 32px;
+      }
+
+      .logo-panel {
+        min-height: 530px;
+      }
+
+      .logo-panel::before {
+        width: 500px;
+        height: 500px;
+      }
+
+      .logo-panel::after {
+        width: 455px;
+        height: 455px;
+      }
+
+      .hero-logo {
+        width: min(86%, 420px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .philosophy-grid,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+
+      .logo-panel {
+        order: -1;
+        min-height: 450px;
+      }
+
+      .logo-panel::before {
+        width: 420px;
+        height: 420px;
+      }
+
+      .logo-panel::after {
+        width: 385px;
+        height: 385px;
+      }
+
+      .hero-logo {
+        width: min(82%, 350px);
+      }
+
+      .outcomes {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 780px) {
-      header {
-        position: sticky;
+      :root {
+        --header-height: auto;
+      }
+
+      .wrap {
+        width: min(100% - 28px, 1280px);
       }
 
       .nav {
         grid-template-columns: 1fr;
+
         justify-items: center;
-        gap: 8px;
-        padding: 10px 0 12px;
+
+        gap: 7px;
+        padding: 9px 0 12px;
       }
 
       .brand-mark {
-        height: 64px;
+        height: 74px;
       }
 
       .nav-links {
         width: 100%;
+
         justify-content: flex-start;
+
         gap: 22px;
+        margin-left: 0;
+
         overflow-x: auto;
-        padding: 2px 4px 8px;
+
+        padding: 3px 4px 9px;
+
         scrollbar-width: none;
       }
 
@@ -528,90 +910,43 @@
       }
 
       .nav-links a {
-        font-size: .84rem;
+        font-size: 0.84rem;
       }
 
       #philosophy,
       #difference,
       #development,
       #contact {
-        scroll-margin-top: 145px;
-      }
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .philosophy-grid,
-      .compare-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .logo-panel {
-        min-height: 420px;
-        order: -1;
-      }
-
-      .hero-logo {
-        width: min(100%, 520px);
-      }
-
-      .logo-panel::before {
-        width: 390px;
-        height: 390px;
-      }
-
-      .logo-panel::after {
-        width: 360px;
-        height: 360px;
-      }
-
-      .outcomes {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero {
-        padding-top: 48px;
+        scroll-margin-top: 148px;
       }
     }
 
     @media (max-width: 620px) {
-      .wrap {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .brand-mark {
-        height: 58px;
-      }
-
-      .nav-links {
-        gap: 18px;
-      }
-
       .hero {
         min-height: auto;
-        padding: 34px 0 60px;
+        padding: 30px 0 60px;
       }
 
       .logo-panel {
-        min-height: 300px;
-      }
-
-      .hero-logo {
-        width: min(100%, 360px);
+        min-height: 330px;
       }
 
       .logo-panel::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .logo-panel::after {
         width: 275px;
         height: 275px;
       }
 
-      .logo-panel::after {
-        width: 250px;
-        height: 250px;
+      .hero-logo {
+        width: min(80%, 245px);
       }
 
       h1 {
-        font-size: clamp(3.8rem, 18vw, 5.2rem);
+        font-size: clamp(3.7rem, 17vw, 5.1rem);
       }
 
       section {
@@ -636,32 +971,60 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Next Shift Hockey home">
+
+      <a
+        class="brand"
+        href="#top"
+        aria-label="Next Shift Hockey home"
+      >
         <img
           class="brand-mark"
           src="assets/next-shift-logo.png"
           alt="Next Shift Hockey"
-        />
+        >
       </a>
 
-      <nav class="nav-links" aria-label="Page sections">
-        <a href="#philosophy">Philosophy</a>
-        <a href="#difference">What Makes Us Different</a>
-        <a href="#development">Player Development</a>
-        <a href="#contact">Contact</a>
+      <nav
+        class="nav-links"
+        aria-label="Page sections"
+      >
+        <a href="#philosophy">
+          Philosophy
+        </a>
+
+        <a href="#difference">
+          What Makes Us Different
+        </a>
+
+        <a href="#development">
+          Player Development
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
       </nav>
 
-      <a class="nav-cta" href="mailto:claudio.virga@nextshifthockey.ca">
+      <a
+        class="nav-cta"
+        href="mailto:claudio.virga@nextshifthockey.ca"
+      >
         Get in touch
       </a>
+
     </div>
   </header>
 
   <main id="top">
+
     <section class="hero">
       <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Develop today. Dominate tomorrow.</div>
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            Develop today. Dominate tomorrow.
+          </div>
 
           <h1>
             Train for your next shift.
@@ -669,172 +1032,358 @@
           </h1>
 
           <p class="hero-copy">
-            Next Shift Hockey helps players become the kind of teammates coaches trust—prepared,
-            competitive, accountable, tactically aware, and ready to make an impact from the first
-            day of tryouts.
+            Next Shift Hockey helps players become the kind of teammates
+            coaches trust—prepared, competitive, accountable, tactically
+            aware, and ready to make an impact from the first day of tryouts.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#philosophy">Our philosophy</a>
-            <a class="btn btn-secondary" href="mailto:claudio.virga@nextshifthockey.ca">
+
+            <a
+              class="btn btn-primary"
+              href="#philosophy"
+            >
+              Our philosophy
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="mailto:claudio.virga@nextshifthockey.ca"
+            >
               Ask about upcoming skates
             </a>
+
           </div>
         </div>
 
         <div class="logo-panel">
+
           <img
             class="hero-logo"
             src="assets/next-shift-logo.png"
             alt="Next Shift Hockey — Develop today. Dominate tomorrow."
-          />
+          >
+
         </div>
       </div>
     </section>
 
     <section id="philosophy">
       <div class="wrap">
+
         <div class="section-head">
-          <div class="eyebrow">Our philosophy</div>
-          <h2>Better players. Better teammates.</h2>
+
+          <div class="eyebrow">
+            Our philosophy
+          </div>
+
+          <h2>
+            Better players. Better teammates.
+          </h2>
+
           <p>
-            We believe player development is about more than isolated skill. The goal is to help
-            athletes transfer their skills into real team environments while building the habits,
-            awareness, discipline, and confidence required to succeed.
+            We believe player development is about more than isolated skill.
+            The goal is to help athletes transfer their skills into real team
+            environments while building the habits, awareness, discipline,
+            and confidence required to succeed.
           </p>
+
         </div>
 
         <div class="philosophy-grid">
+
           <article class="card">
-            <div class="card-number">01 — PLAYER FIRST</div>
-            <h3>Development with purpose</h3>
+
+            <div class="card-number">
+              01 — PLAYER FIRST
+            </div>
+
+            <h3>
+              Development with purpose
+            </h3>
+
             <p>
-              Every session is designed to help players understand not only what to do, but when
-              and why to do it. That means stronger hockey IQ, better decisions, and skills that
-              hold up under pressure.
+              Every session is designed to help players understand not only
+              what to do, but when and why to do it. That means stronger
+              hockey IQ, better decisions, and skills that hold up under
+              pressure.
             </p>
+
           </article>
 
           <article class="card">
-            <div class="card-number">02 — HIGH STANDARDS</div>
-            <h3>Habits coaches notice</h3>
+
+            <div class="card-number">
+              02 — HIGH STANDARDS
+            </div>
+
+            <h3>
+              Habits coaches notice
+            </h3>
+
             <p>
-              We reinforce pace, compete level, attention to detail, communication, accountability,
-              and consistency—the practice behaviours that earn trust and create opportunities.
+              We reinforce pace, compete level, attention to detail,
+              communication, accountability, and consistency—the practice
+              behaviours that earn trust and create opportunities.
             </p>
+
           </article>
 
           <article class="card">
-            <div class="card-number">03 — TEAM IMPACT</div>
-            <h3>Play connected</h3>
+
+            <div class="card-number">
+              03 — TEAM IMPACT
+            </div>
+
+            <h3>
+              Play connected
+            </h3>
+
             <p>
-              Players learn how to support teammates, create options, defend with structure,
-              manage space, and contribute within systems instead of playing as five individuals.
+              Players learn how to support teammates, create options, defend
+              with structure, manage space, and contribute within systems
+              instead of playing as five individuals.
             </p>
+
           </article>
 
           <article class="card">
-            <div class="card-number">04 — GROWTH MINDSET</div>
-            <h3>Prepared for the next level</h3>
+
+            <div class="card-number">
+              04 — GROWTH MINDSET
+            </div>
+
+            <h3>
+              Prepared for the next level
+            </h3>
+
             <p>
-              We create a competitive, supportive, and respectful environment that develops
-              resilience, discipline, confidence, and a willingness to be coached.
+              We create a competitive, supportive, and respectful environment
+              that develops resilience, discipline, confidence, and a
+              willingness to be coached.
             </p>
+
           </article>
+
         </div>
       </div>
     </section>
 
-    <section class="difference" id="difference">
+    <section
+      class="difference"
+      id="difference"
+    >
       <div class="wrap">
+
         <div class="section-head">
-          <div class="eyebrow">What makes us different</div>
-          <h2>Skills matter. So does knowing how to play.</h2>
+
+          <div class="eyebrow">
+            What makes us different
+          </div>
+
+          <h2>
+            Skills matter. So does knowing how to play.
+          </h2>
+
           <p>
-            Individual skill development is essential at every level. Next Shift complements that
-            work by focusing on how players apply their abilities within team tactics, practices,
-            games, and tryout situations.
+            Individual skill development is essential at every level. Next
+            Shift complements that work by focusing on how players apply
+            their abilities within team tactics, practices, games, and
+            tryout situations.
           </p>
+
         </div>
 
         <div class="compare-grid">
+
           <article class="card compare-card">
-            <h3>Individual skill development</h3>
-            <p>Builds the technical tools every player needs.</p>
+
+            <h3>
+              Individual skill development
+            </h3>
+
+            <p>
+              Builds the technical tools every player needs.
+            </p>
+
             <ul class="checklist">
-              <li>Skating mechanics and edge work</li>
-              <li>Puck control and shooting</li>
-              <li>Position-specific technical skills</li>
-              <li>Repetition and individual confidence</li>
+              <li>
+                Skating mechanics and edge work
+              </li>
+
+              <li>
+                Puck control and shooting
+              </li>
+
+              <li>
+                Position-specific technical skills
+              </li>
+
+              <li>
+                Repetition and individual confidence
+              </li>
             </ul>
+
           </article>
 
           <article class="card compare-card highlight">
-            <h3>Next Shift Hockey</h3>
-            <p>Teaches players how to use those tools effectively within a team.</p>
+
+            <h3>
+              Next Shift Hockey
+            </h3>
+
+            <p>
+              Teaches players how to use those tools effectively within a
+              team.
+            </p>
+
             <ul class="checklist">
-              <li>Team tactics and positional habits</li>
-              <li>Practice pace, details, and coachability</li>
-              <li>Reading pressure, support, and space</li>
-              <li>Tryout preparation and first-impression habits</li>
-              <li>Communication, compete, and accountability</li>
+              <li>
+                Team tactics and positional habits
+              </li>
+
+              <li>
+                Practice pace, details, and coachability
+              </li>
+
+              <li>
+                Reading pressure, support, and space
+              </li>
+
+              <li>
+                Tryout preparation and first-impression habits
+              </li>
+
+              <li>
+                Communication, compete, and accountability
+              </li>
             </ul>
+
           </article>
+
         </div>
       </div>
     </section>
 
     <section id="development">
       <div class="wrap">
+
         <div class="section-head">
-          <div class="eyebrow">What players develop</div>
-          <h2>An upper hand before the season starts.</h2>
+
+          <div class="eyebrow">
+            What players develop
+          </div>
+
+          <h2>
+            An upper hand before the season starts.
+          </h2>
+
         </div>
 
         <div class="outcomes">
+
           <article class="outcome">
-            <h3>Tryout readiness</h3>
-            <p>Know what coaches evaluate and how to make a strong, consistent impression.</p>
+
+            <h3>
+              Tryout readiness
+            </h3>
+
+            <p>
+              Know what coaches evaluate and how to make a strong,
+              consistent impression.
+            </p>
+
           </article>
 
           <article class="outcome">
-            <h3>Practice habits</h3>
-            <p>Arrive prepared, execute with pace, respond to feedback, and compete every rep.</p>
+
+            <h3>
+              Practice habits
+            </h3>
+
+            <p>
+              Arrive prepared, execute with pace, respond to feedback,
+              and compete every rep.
+            </p>
+
           </article>
 
           <article class="outcome">
-            <h3>Tactical awareness</h3>
-            <p>Recognize common team concepts and make faster, more connected decisions.</p>
+
+            <h3>
+              Tactical awareness
+            </h3>
+
+            <p>
+              Recognize common team concepts and make faster, more
+              connected decisions.
+            </p>
+
           </article>
 
           <article class="outcome">
-            <h3>Team value</h3>
-            <p>Become dependable, accountable, communicative, and easier for coaches to trust.</p>
+
+            <h3>
+              Team value
+            </h3>
+
+            <p>
+              Become dependable, accountable, communicative, and easier
+              for coaches to trust.
+            </p>
+
           </article>
+
         </div>
       </div>
     </section>
 
-    <section class="cta" id="contact">
+    <section
+      class="cta"
+      id="contact"
+    >
       <div class="wrap">
+
         <div class="cta-box">
-          <div class="eyebrow">Train for your next shift</div>
-          <h2>Dominate it.</h2>
+
+          <div class="eyebrow">
+            Train for your next shift
+          </div>
+
+          <h2>
+            Dominate it.
+          </h2>
+
           <p>
-            Learn about upcoming development skates, camps, and team-focused training opportunities.
+            Learn about upcoming development skates, camps, and
+            team-focused training opportunities.
           </p>
-          <a class="btn btn-primary" href="mailto:claudio.virga@nextshifthockey.ca">
+
+          <a
+            class="btn btn-primary"
+            href="mailto:claudio.virga@nextshifthockey.ca"
+          >
             claudio.virga@nextshifthockey.ca
           </a>
+
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
     <div class="wrap footer-row">
-      <div><strong>Next Shift Hockey</strong> — Develop today. Dominate tomorrow.</div>
-      <div>Train for your next shift. Dominate it.</div>
+
+      <div>
+        <strong>Next Shift Hockey</strong>
+        — Develop today. Dominate tomorrow.
+      </div>
+
+      <div>
+        Train for your next shift. Dominate it.
+      </div>
+
     </div>
   </footer>
 </body>
