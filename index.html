@@ -230,6 +230,48 @@
       transform: translateY(-1px);
     }
 
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid rgba(26, 152, 255, 0.65);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 102;
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+    }
+
+    .menu-toggle span:nth-child(1) { top: 15px; }
+    .menu-toggle span:nth-child(2) { top: 22px; }
+    .menu-toggle span:nth-child(3) { top: 29px; }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      top: 22px;
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      top: 22px;
+      transform: rotate(-45deg);
+    }
+
     #philosophy,
     #difference,
     #development,
@@ -724,7 +766,7 @@
 
     @media (max-width: 780px) {
       :root {
-        --header-height: auto;
+        --header-height: 86px;
       }
 
       .wrap {
@@ -732,39 +774,72 @@
       }
 
       .nav {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        gap: 7px;
-        padding: 9px 0 12px;
+        min-height: var(--header-height);
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        justify-items: stretch;
+        align-items: center;
+        gap: 16px;
+        padding: 6px 0;
+        position: relative;
+      }
+
+      .brand {
+        justify-self: start;
       }
 
       .brand-mark {
-        height: 74px;
+        height: 72px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        justify-self: end;
       }
 
       .nav-links {
-        width: 100%;
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: -14px;
+        right: -14px;
+        width: auto;
+        margin: 0;
+        padding: 12px 14px 16px;
+        flex-direction: column;
+        align-items: stretch;
         justify-content: flex-start;
-        gap: 22px;
-        margin-left: 0;
-        overflow-x: auto;
-        padding: 3px 4px 9px;
-        scrollbar-width: none;
+        gap: 0;
+        overflow: visible;
+        background: rgba(2, 9, 16, 0.98);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
       }
 
-      .nav-links::-webkit-scrollbar {
-        display: none;
+      .nav-links.open {
+        display: flex;
       }
 
       .nav-links a {
-        font-size: 0.84rem;
+        width: 100%;
+        padding: 14px 8px;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links a::after {
+        display: none;
       }
 
       #philosophy,
       #difference,
       #development,
       #contact {
-        scroll-margin-top: 148px;
+        scroll-margin-top: 105px;
       }
     }
 
@@ -848,8 +923,21 @@
         >
       </a>
 
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <nav
         class="nav-links"
+        id="mobile-navigation"
         aria-label="Page sections"
       >
         <a href="#philosophy">Philosophy</a>
@@ -949,7 +1037,7 @@
             <h3>Habits coaches notice</h3>
             <p>
               We reinforce pace, compete level, attention to detail,
-              communication, accountability, and consistency—the practice
+              communication, accountability, and consistency. The practice
               behaviours that earn trust and create opportunities.
             </p>
           </article>
@@ -1110,5 +1198,37 @@
 
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const mobileNavLinks = navLinks.querySelectorAll("a");
+
+    function closeMobileMenu() {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 780) {
+        closeMobileMenu();
+      }
+    });
+  </script>
 </body>
 </html>
